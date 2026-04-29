@@ -1,0 +1,1204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>12-Week Fitness Program – Active Living</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Source+Sans+3:wght@300;400;600&display=swap');
+
+  :root {
+    --sage: #7a9e7e;
+    --sage-light: #b8d4bb;
+    --sage-dark: #4a6b4e;
+    --cream: #faf7f2;
+    --warm: #f0ebe1;
+    --gold: #c9a84c;
+    --gold-light: #e8d49e;
+    --charcoal: #2c2c2c;
+    --muted: #6b6b6b;
+    --white: #ffffff;
+    --accent-coral: #d4856a;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Source Sans 3', sans-serif;
+    background: var(--cream);
+    color: var(--charcoal);
+    line-height: 1.6;
+  }
+
+  /* HEADER */
+  .header {
+    background: linear-gradient(135deg, var(--sage-dark) 0%, var(--sage) 60%, var(--sage-light) 100%);
+    color: var(--white);
+    padding: 60px 40px 50px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .header::before {
+    content: '';
+    position: absolute;
+    top: -60px; right: -60px;
+    width: 240px; height: 240px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.07);
+  }
+  .header::after {
+    content: '';
+    position: absolute;
+    bottom: -80px; left: -40px;
+    width: 300px; height: 300px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.05);
+  }
+  .header h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.6rem;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    margin-bottom: 8px;
+    position: relative;
+    z-index: 1;
+  }
+  .header .subtitle {
+    font-size: 1.05rem;
+    font-weight: 300;
+    opacity: 0.88;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    position: relative;
+    z-index: 1;
+  }
+  .header .tagline {
+    margin-top: 18px;
+    font-size: 1rem;
+    font-style: italic;
+    opacity: 0.75;
+    font-family: 'Playfair Display', serif;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* INTRO CARDS */
+  .intro-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    padding: 40px 40px 10px;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+  .intro-card {
+    background: var(--white);
+    border-radius: 14px;
+    padding: 24px 20px;
+    border-left: 4px solid var(--gold);
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  }
+  .intro-card .icon { font-size: 1.8rem; margin-bottom: 8px; }
+  .intro-card h3 { font-family: 'Playfair Display', serif; font-size: 1rem; color: var(--sage-dark); margin-bottom: 6px; }
+  .intro-card p { font-size: 0.88rem; color: var(--muted); line-height: 1.5; }
+
+  /* SECTION TITLE */
+  .section-label {
+    max-width: 1100px;
+    margin: 40px auto 16px;
+    padding: 0 40px;
+  }
+  .section-label h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.6rem;
+    color: var(--sage-dark);
+    border-bottom: 2px solid var(--gold-light);
+    padding-bottom: 8px;
+    display: inline-block;
+  }
+
+  /* PHASE BLOCKS */
+  .phase-block {
+    max-width: 1100px;
+    margin: 0 auto 40px;
+    padding: 0 40px;
+  }
+  .phase-header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 20px;
+  }
+  .phase-badge {
+    background: var(--sage-dark);
+    color: var(--white);
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    padding: 6px 16px;
+    border-radius: 20px;
+    white-space: nowrap;
+  }
+  .phase-badge.mid { background: var(--gold); color: var(--charcoal); }
+  .phase-badge.late { background: var(--accent-coral); }
+  .phase-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.25rem;
+    color: var(--charcoal);
+  }
+  .phase-desc {
+    font-size: 0.88rem;
+    color: var(--muted);
+    margin-top: 2px;
+  }
+
+  /* WEEK CARDS */
+  .week-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 18px;
+  }
+  .week-card {
+    background: var(--white);
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: 0 2px 14px rgba(0,0,0,0.07);
+    transition: box-shadow 0.2s;
+  }
+  .week-card:hover { box-shadow: 0 6px 24px rgba(0,0,0,0.12); }
+  .week-card-header {
+    background: var(--warm);
+    padding: 14px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid var(--sage-light);
+  }
+  .week-card-header .week-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.05rem;
+    color: var(--sage-dark);
+    font-weight: 700;
+  }
+  .week-card-header .week-focus {
+    font-size: 0.78rem;
+    background: var(--sage-light);
+    color: var(--sage-dark);
+    padding: 3px 10px;
+    border-radius: 12px;
+    font-weight: 600;
+  }
+  .week-card-body { padding: 18px 20px; }
+
+  /* DAY ROWS */
+  .day-row {
+    display: flex;
+    gap: 10px;
+    padding: 10px 0;
+    border-bottom: 1px solid #f0ebe1;
+    align-items: flex-start;
+  }
+  .day-row:last-child { border-bottom: none; }
+  .day-label {
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--gold);
+    min-width: 36px;
+    padding-top: 2px;
+  }
+  .day-content { flex: 1; }
+  .day-name {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--charcoal);
+    margin-bottom: 4px;
+  }
+  .exercise-list {
+    list-style: none;
+    padding: 0;
+  }
+  .exercise-list li {
+    font-size: 0.82rem;
+    color: var(--muted);
+    padding: 1px 0;
+    padding-left: 12px;
+    position: relative;
+  }
+  .exercise-list li::before {
+    content: '·';
+    position: absolute;
+    left: 0;
+    color: var(--sage);
+    font-size: 1.1rem;
+    line-height: 1.2;
+  }
+  .rest-label {
+    font-size: 0.82rem;
+    color: #aaa;
+    font-style: italic;
+  }
+
+  /* TIPS SECTION */
+  .tips-section {
+    max-width: 1100px;
+    margin: 0 auto 20px;
+    padding: 0 40px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 18px;
+  }
+  .tip-card {
+    background: var(--sage-dark);
+    color: var(--white);
+    border-radius: 14px;
+    padding: 24px 22px;
+  }
+  .tip-card h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1rem;
+    margin-bottom: 10px;
+    color: var(--gold-light);
+  }
+  .tip-card ul {
+    list-style: none;
+    padding: 0;
+  }
+  .tip-card ul li {
+    font-size: 0.84rem;
+    padding: 4px 0;
+    padding-left: 16px;
+    position: relative;
+    opacity: 0.9;
+  }
+  .tip-card ul li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: var(--gold-light);
+    font-size: 0.75rem;
+  }
+
+  /* FOOTER */
+  .footer {
+    background: var(--charcoal);
+    color: rgba(255,255,255,0.5);
+    text-align: center;
+    padding: 30px 40px;
+    font-size: 0.8rem;
+    margin-top: 50px;
+  }
+  .footer strong { color: rgba(255,255,255,0.8); }
+
+  @media (max-width: 600px) {
+    .header h1 { font-size: 1.8rem; }
+    .intro-grid, .phase-block, .section-label, .tips-section { padding: 0 20px; }
+    .intro-grid { padding-top: 28px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<div class="header">
+  <h1>12-Week Active Living Program</h1>
+  <div class="subtitle">Designed for the Active Senior Athlete</div>
+  <div class="tagline">Weight Management · Flexibility · Core Strength · Golf & Pickleball Performance</div>
+</div>
+
+<!-- INTRO CARDS -->
+<div class="intro-grid">
+  <div class="intro-card">
+    <div class="icon">🏌️‍♀️</div>
+    <h3>Sport-Supportive</h3>
+    <p>Designed to complement 2–3x/week golf and pickleball without overtraining.</p>
+  </div>
+  <div class="intro-card">
+    <div class="icon">🔥</div>
+    <h3>Weight Management</h3>
+    <p>Metabolic circuits and moderate cardio boost calorie burn while preserving lean muscle.</p>
+  </div>
+  <div class="intro-card">
+    <div class="icon">🧘‍♀️</div>
+    <h3>Flexibility Focus</h3>
+    <p>Daily stretching and yoga-inspired mobility work for joint health and range of motion.</p>
+  </div>
+  <div class="intro-card">
+    <div class="icon">💪</div>
+    <h3>Core & Balance</h3>
+    <p>Functional core training every session for stability, posture, and fall prevention.</p>
+  </div>
+  <div class="intro-card">
+    <div class="icon">🏋️‍♀️</div>
+    <h3>Full Gym Access</h3>
+    <p>Uses machines, free weights, cables, resistance bands, and mat work.</p>
+  </div>
+</div>
+
+<!-- PHASE 1 -->
+<div class="section-label">
+  <h2>Phase 1 — Foundation (Weeks 1–4)</h2>
+</div>
+
+<div class="phase-block">
+  <div class="phase-header">
+    <span class="phase-badge">Weeks 1–4</span>
+    <div>
+      <div class="phase-title">Build the Base</div>
+      <div class="phase-desc">Learn movement patterns, improve mobility, establish consistency. Light-to-moderate intensity.</div>
+    </div>
+  </div>
+
+  <div class="week-grid">
+
+    <!-- Week 1 -->
+    <div class="week-card">
+      <div class="week-card-header">
+        <span class="week-num">Week 1</span>
+        <span class="week-focus">Orientation</span>
+      </div>
+      <div class="week-card-body">
+        <div class="day-row">
+          <div class="day-label">Mon</div>
+          <div class="day-content">
+            <div class="day-name">Full Body Strength + Core</div>
+            <ul class="exercise-list">
+              <li>Leg Press 3×12</li>
+              <li>Seated Row 3×12</li>
+              <li>Chest Press Machine 3×12</li>
+              <li>Plank 3×20 sec</li>
+              <li>Bird-Dog 3×10 each</li>
+              <li>Supine Hip Bridges 2×15</li>
+            </ul>
+          </div>
+        </div>
+        <div class="day-row">
+          <div class="day-label">Tue</div>
+          <div class="day-content">
+            <div class="day-name">Flexibility + Light Cardio</div>
+            <ul class="exercise-list">
+              <li>20 min treadmill walk (moderate)</li>
+              <li>Full body stretching routine 20 min</li>
+              <li>Hip flexor, hamstring, shoulder holds</li>
+            </ul>
+          </div>
+        </div>
+        <div class="day-row">
+          <div class="day-label">Wed</div>
+          <div class="day-content"><span class="rest-label">Golf / Pickleball / Rest</span></div>
+        </div>
+        <div class="day-row">
+          <div class="day-label">Thu</div>
+          <div class="day-content">
+            <div class="day-name">Lower Body + Core</div>
+            <ul class="exercise-list">
+              <li>Seated Leg Curl 3×12</li>
+              <li>Hip Abductor Machine 3×15</li>
+              <li>Step-ups (low step) 2×10</li>
+              <li>Dead Bug 3×10</li>
+              <li>Seated Balance on ball 2×30 sec</li>
+            </ul>
+          </div>
+        </div>
+        <div class="day-row">
+          <div class="day-label">Fri</div>
+          <div class="day-content">
+            <div class="day-name">Upper Body + Flexibility</div>
+            <ul class="exercise-list">
+              <li>Lat Pulldown 3×12</li>
+              <li>Shoulder Press Machine 3×12</li>
+              <li>Resistance Band Rotations 2×15</li>
+              <li>Chest/shoulder stretch 15 min</li>
+            </ul>
+          </div>
+        </div>
+        <div class="day-row">
+          <div class="day-label">Sat</div>
+          <div class="day-content"><span class="rest-label">Golf / Pickleball</span></div>
+        </div>
+        <div class="day-row">
+          <div class="day-label">Sun</div>
+          <div class="day-content"><span class="rest-label">Rest / Gentle Walk</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Week 2 -->
+    <div class="week-card">
+      <div class="week-card-header">
+        <span class="week-num">Week 2</span>
+        <span class="week-focus">Rhythm</span>
+      </div>
+      <div class="week-card-body">
+        <div class="day-row">
+          <div class="day-label">Mon</div>
+          <div class="day-content">
+            <div class="day-name">Full Body Strength + Core</div>
+            <ul class="exercise-list">
+              <li>Leg Press 3×14</li>
+              <li>Cable Row 3×12</li>
+              <li>Incline Chest Press 3×12</li>
+              <li>Plank 3×25 sec</li>
+              <li>Pallof Press 3×10 each side</li>
+              <li>Glute Bridge 2×15</li>
+            </ul>
+          </div>
+        </div>
+        <div class="day-row">
+          <div class="day-label">Tue</div>
+          <div class="day-content">
+            <div class="day-name">Yoga-Inspired Mobility</div>
+            <ul class="exercise-list">
+              <li>30 min guided stretching (chair + mat)</li>
+              <li>Cat-Cow, Thread-the-Needle</li>
+              <li>Spinal rotations, hip circles</li>
+            </ul>
+          </div>
+        </div>
+        <div class="day-row">
+          <div class="day-label">Wed</div>
+          <div class="day-content"><span class="rest-label">Golf / Pickleball / Rest</span></div>
+        </div>
+        <div class="day-row">
+          <div class="day-label">Thu</div>
+          <div class="day-content">
+            <div class="day-name">Lower Body + Core</div>
+            <ul class="exercise-list">
+              <li>Wall Sit 3×30 sec</li>
+              <li>Seated Leg Extension 3×12</li>
+              <li>Hip Adductor Machine 3×15</li>
+              <li>Side Plank 2×20 sec</li>
+              <li>Marching Hip Bridge 2×12</li>
+            </ul>
+          </div>
+        </div>
+        <div class="day-row">
+          <div class="day-label">Fri</div>
+          <div class="day-content">
+            <div class="day-name">Upper Body + Cardio</div>
+            <ul class="exercise-list">
+              <li>Seated Dumbbell Curl 3×12</li>
+              <li>Tricep Pushdown 3×12</li>
+              <li>Face Pulls 3×15</li>
+              <li>25 min elliptical moderate pace</li>
+            </ul>
+          </div>
+        </div>
+        <div class="day-row">
+          <div class="day-label">Sat/Sun</div>
+          <div class="day-content"><span class="rest-label">Golf / Pickleball / Rest</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Week 3 -->
+    <div class="week-card">
+      <div class="week-card-header">
+        <span class="week-num">Week 3</span>
+        <span class="week-focus">Volume Up</span>
+      </div>
+      <div class="week-card-body">
+        <div class="day-row">
+          <div class="day-label">Mon</div>
+          <div class="day-content">
+            <div class="day-name">Full Body Circuit</div>
+            <ul class="exercise-list">
+              <li>Goblet Squat 3×12 (light)</li>
+              <li>TRX/Cable Row 3×12</li>
+              <li>Dumbbell Chest Fly 3×12</li>
+              <li>Plank w/ reach 3×10 each</li>
+              <li>Stability Ball Pass 2×12</li>
+            </ul>
+          </div>
+        </div>
+        <div class="day-row">
+          <div class="day-label">Tue</div>
+          <div class="day-content">
+            <div class="day-name">Cardio + Core</div>
+            <ul class="exercise-list">
+              <li>30 min stationary bike moderate</li>
+              <li>Russian Twists (seated) 3×15</li>
+              <li>Seated ball knee lifts 2×15</li>
+            </ul>
+          </div>
+        </div>
+        <div class="day-row">
+          <div class="day-label">Wed</div>
+          <div class="day-content"><span class="rest-label">Golf / Pickleball</span></div>
+        </div>
+        <div class="day-row">
+          <div class="day-label">Thu</div>
+          <div class="day-content">
+            <div class="day-name">Lower Body + Balance</div>
+            <ul class="exercise-list">
+              <li>Single-leg Stand (supported) 3×30 sec</li>
+              <li>Step-ups 3×10</li>
+              <li>Glute Kickback Machine 3×12</li>
+              <li>Standing Calf Raise 3×15</li>
+            </ul>
+          </div>
+        </div>
+        <div class="day-row">
+          <div class="day-label">Fri</div>
+          <div class="day-content">
+            <div class="day-name">Mobility + Stretch</div>
+            <ul class="exercise-list">
+              <li>35 min full body stretch session</li>
+              <li>Thoracic rotation work</li>
+              <li>Hip 90/90 stretch</li>
+              <li>Overhead reach &amp; chest open</li>
+            </ul>
+          </div>
+        </div>
+        <div class="day-row">
+          <div class="day-label">Sat/Sun</div>
+          <div class="day-content"><span class="rest-label">Golf / Pickleball / Rest</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Week 4 -->
+    <div class="week-card">
+      <div class="week-card-header">
+        <span class="week-num">Week 4</span>
+        <span class="week-focus">Deload</span>
+      </div>
+      <div class="week-card-body">
+        <div class="day-row">
+          <div class="day-label">Mon</div>
+          <div class="day-content">
+            <div class="day-name">Light Full Body</div>
+            <ul class="exercise-list">
+              <li>Machines only, 50% of usual weight</li>
+              <li>Focus on full range of motion</li>
+              <li>Core: Plank 2×20 sec, Bird-Dog 2×10</li>
+            </ul>
+          </div>
+        </div>
+        <div class="day-row">
+          <div class="day-label">Tue–Thu</div>
+          <div class="day-content">
+            <div class="day-name">Active Recovery</div>
+            <ul class="exercise-list">
+              <li>20 min walking daily</li>
+              <li>Morning stretching 15 min</li>
+              <li>Foam rolling if available</li>
+            </ul>
+          </div>
+        </div>
+        <div class="day-row">
+          <div class="day-label">Fri</div>
+          <div class="day-content">
+            <div class="day-name">Flexibility Focus</div>
+            <ul class="exercise-list">
+              <li>40 min deep stretch session</li>
+              <li>Assess soreness, note improvements</li>
+            </ul>
+          </div>
+        </div>
+        <div class="day-row">
+          <div class="day-label">Sat/Sun</div>
+          <div class="day-content"><span class="rest-label">Golf / Pickleball / Rest</span></div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- PHASE 2 -->
+<div class="section-label">
+  <h2>Phase 2 — Build (Weeks 5–8)</h2>
+</div>
+
+<div class="phase-block">
+  <div class="phase-header">
+    <span class="phase-badge mid">Weeks 5–8</span>
+    <div>
+      <div class="phase-title">Increase Intensity & Metabolic Work</div>
+      <div class="phase-desc">Add supersets, light circuits, and higher rep ranges to elevate calorie burn and cardiovascular benefit.</div>
+    </div>
+  </div>
+
+  <div class="week-grid">
+
+    <!-- Week 5 -->
+    <div class="week-card">
+      <div class="week-card-header">
+        <span class="week-num">Week 5</span>
+        <span class="week-focus">Supersets Begin</span>
+      </div>
+      <div class="week-card-body">
+        <div class="day-row">
+          <div class="day-label">Mon</div>
+          <div class="day-content">
+            <div class="day-name">Upper Body Superset + Core</div>
+            <ul class="exercise-list">
+              <li>A1: Lat Pulldown 3×12 / A2: Chest Press 3×12</li>
+              <li>B1: Seated Row 3×12 / B2: Shoulder Press 3×12</li>
+              <li>Plank 3×30 sec</li>
+              <li>Wood Chop Cable (low-to-high) 3×10</li>
+            </ul>
+          </div>
+        </div>
+        <div class="day-row">
+          <div class="day-label">Tue</div>
+          <div class="day-content">
+            <div class="day-name">Cardio + Flexibility</div>
+            <ul class="exercise-list">
+              <li>35 min elliptical or bike</li>
+              <li>Interval: 2 min easy / 1 min brisk × 8</li>
+              <li>15 min stretching after</li>
+            </ul>
+          </div>
+        </div>
+        <div class="day-row">
+          <div class="day-label">Wed</div>
+          <div class="day-content"><span class="rest-label">Golf / Pickleball</span></div>
+        </div>
+        <div class="day-row">
+          <div class="day-label">Thu</div>
+          <div class="day-content">
+            <div class="day-name">Lower Body Superset + Balance</div>
+            <ul class="exercise-list">
+              <li>A1: Leg Press 3×14 / A2: Leg Curl 3×12</li>
+              <li>B1: Step-ups 3×12 / B2: Hip Abductor 3×15</li>
+              <li>Single-leg balance 3×30 sec (unsupported)</li>
+              <li>Calf Raises 3×15</li>
+            </ul>
+          </div>
+        </div>
+        <div class="day-row">
+          <div class="day-label">Fri</div>
+          <div class="day-content">
+            <div class="day-name">Core + Mobility</div>
+            <ul class="exercise-list">
+              <li>Dead Bug 3×12, Side Plank 3×25 sec</li>
+              <li>Pallof Press 3×12</li>
+              <li>Stability Ball Rollout 2×10</li>
+              <li>30 min full stretch session</li>
+            </ul>
+          </div>
+        </div>
+        <div class="day-row">
+          <div class="day-label">Sat/Sun</div>
+          <div class="day-content"><span class="rest-label">Golf / Pickleball / Rest</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Week 6 -->
+    <div class="week-card">
+      <div class="week-card-header">
+        <span class="week-num">Week 6</span>
+        <span class="week-focus">Metabolic</span>
+      </div>
+      <div class="week-card-body">
+        <div class="day-row">
+          <div class="day-label">Mon</div>
+          <div class="day-content">
+            <div class="day-name">Full Body Circuit (3 rounds)</div>
+            <ul class="exercise-list">
+              <li>Goblet Squat ×12</li>
+              <li>DB Row ×12 each</li>
+              <li>Step-ups ×10</li>
+              <li>Resistance Band Press ×12</li>
+              <li>Plank ×30 sec</li>
+              <li>Rest 90 sec between rounds</li>
+            </ul>
+          </div>
+        </div>
+        <div class="day-row">
+          <div class="day-label">Tue</div>
+          <div class="day-content">
+            <div class="day-name">Cardio + Stretch</div>
+            <ul class="exercise-list">
+              <li>40 min brisk treadmill walk (incline)</li>
+              <li>Post-walk 20 min stretching</li>
+            </ul>
+          </div>
+        </div>
+        <div class="day-row">
+          <div class="day-label">Wed</div>
+          <div class="day-content"><span class="rest-label">Golf / Pickleball</span></div>
+        </div>
+        <div class="day-row">
+          <div class="day-label">Thu</div>
+          <div class="day-content">
+            <div class="day-name">Lower Body + Core</div>
+            <ul class="exercise-list">
+              <li>Romanian Deadlift (light DB) 3×12</li>
+              <li>Lateral Band Walk 3×15</li>
+              <li>Stability Ball Wall Squat 3×12</li>
+              <li>Ab Crunch Machine 3×15</li>
+              <li>Back Extension 3×12</li>
+            </ul>
+          </div>
+        </div>
+        <div class="day-row">
+          <div class="day-label">Fri</div>
+          <div class="day-content">
+            <div class="day-name">Upper Body + Mobility</div>
+            <ul class="exercise-list">
+              <li>Arnold Press 3×12</li>
+              <li>Cable Bicep Curl 3×12</li>
+              <li>Overhead Tricep Extension 3×12</li>
+              <li>Shoulder mobility work 15 min</li>
+            </ul>
+          </div>
+        </div>
+        <div class="day-row">
+          <div class="day-label">Sat/Sun</div>
+          <div class="day-content"><span class="rest-label">Golf / Pickleball / Rest</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Week 7 -->
+    <div class="week-card">
+      <div class="week-card-header">
+        <span class="week-num">Week 7</span>
+        <span class="week-focus">Progression</span>
+      </div>
+      <div class="week-card-body">
+        <div class="day-row">
+          <div class="day-label">Mon</div>
+          <div class="day-content">
+            <div class="day-name">Push + Core</div>
+            <ul class="exercise-list">
+              <li>Incline DB Press 3×12</li>
+              <li>Lateral Raise 3×15</li>
+              <li>Tricep Dips (machine-assisted) 3×12</li>
+              <li>Cable Crunch 3×15</li>
+              <li>Reverse Crunch 3×12</li>
+            </ul>
+          </div>
+        </div>
+        <div class="day-row">
+          <div class="day-label">Tue</div>
+          <div class="day-content">
+            <div class="day-name">Interval Cardio</div>
+            <ul class="exercise-list">
+              <li>30 min bike: 2 min easy, 1 min hard ×10</li>
+              <li>Cool-down 5 min + stretch 15 min</li>
+            </ul>
+          </div>
+        </div>
+        <div class="day-row">
+          <div class="day-label">Wed</div>
+          <div class="day-content"><span class="rest-label">Golf / Pickleball</span></div>
+        </div>
+        <div class="day-row">
+          <div class="day-label">Thu</div>
+          <div class="day-content">
+            <div class="day-name">Pull + Balance</div>
+            <ul class="exercise-list">
+              <li>Lat Pulldown 3×12, Face Pull 3×15</li>
+              <li>DB Hammer Curl 3×12</li>
+              <li>Single-leg RDL (supported) 3×10</li>
+              <li>Bosu balance work 2×45 sec</li>
+            </ul>
+          </div>
+        </div>
+        <div class="day-row">
+          <div class="day-label">Fri</div>
+          <div class="day-content">
+            <div class="day-name">Flexibility + Core</div>
+            <ul class="exercise-list">
+              <li>40 min full body deep stretch</li>
+              <li>Pilates-style mat core 20 min</li>
+            </ul>
+          </div>
+        </div>
+        <div class="day-row">
+          <div class="day-label">Sat/Sun</div>
+          <div class="day-content"><span class="rest-label">Golf / Pickleball / Rest</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Week 8 -->
+    <div class="week-card">
+      <div class="week-card-header">
+        <span class="week-num">Week 8</span>
+        <span class="week-focus">Deload</span>
+      </div>
+      <div class="week-card-body">
+        <div class="day-row">
+          <div class="day-label">Mon</div>
+          <div class="day-content">
+            <div class="day-name">Light Full Body</div>
+            <ul class="exercise-list">
+              <li>All exercises at 60% weight</li>
+              <li>Focus on form and breathing</li>
+              <li>Add extra stretching between sets</li>
+            </ul>
+          </div>
+        </div>
+        <div class="day-row">
+          <div class="day-label">Tue–Thu</div>
+          <div class="day-content">
+            <div class="day-name">Active Recovery</div>
+            <ul class="exercise-list">
+              <li>Walking 25–30 min/day</li>
+              <li>Gentle yoga or stretching 20 min</li>
+              <li>Foam roll: glutes, IT band, thoracic</li>
+            </ul>
+          </div>
+        </div>
+        <div class="day-row">
+          <div class="day-label">Fri</div>
+          <div class="day-content">
+            <div class="day-name">Mobility Assessment</div>
+            <ul class="exercise-list">
+              <li>Test flexibility vs. Week 1</li>
+              <li>45 min full body stretch session</li>
+            </ul>
+          </div>
+        </div>
+        <div class="day-row">
+          <div class="day-label">Sat/Sun</div>
+          <div class="day-content"><span class="rest-label">Golf / Pickleball / Rest</span></div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- PHASE 3 -->
+<div class="section-label">
+  <h2>Phase 3 — Performance (Weeks 9–12)</h2>
+</div>
+
+<div class="phase-block">
+  <div class="phase-header">
+    <span class="phase-badge late">Weeks 9–12</span>
+    <div>
+      <div class="phase-title">Sport Performance & Long-Term Habits</div>
+      <div class="phase-desc">Sport-specific strength, advanced core stability, sustained cardio, and locking in a lasting routine.</div>
+    </div>
+  </div>
+
+  <div class="week-grid">
+
+    <!-- Week 9 -->
+    <div class="week-card">
+      <div class="week-card-header">
+        <span class="week-num">Week 9</span>
+        <span class="week-focus">Sport Strength</span>
+      </div>
+      <div class="week-card-body">
+        <div class="day-row">
+          <div class="day-label">Mon</div>
+          <div class="day-content">
+            <div class="day-name">Golf-Focused Strength</div>
+            <ul class="exercise-list">
+              <li>Cable Wood Chop (both directions) 3×12</li>
+              <li>Standing Cable Row 3×12</li>
+              <li>Shoulder External Rotation 3×15</li>
+              <li>Pallof Press 3×12</li>
+              <li>Plank Shoulder Taps 3×10 each</li>
+            </ul>
+          </div>
+        </div>
+        <div class="day-row">
+          <div class="day-label">Tue</div>
+          <div class="day-content">
+            <div class="day-name">Cardio + Stretch</div>
+            <ul class="exercise-list">
+              <li>40 min incline treadmill walk</li>
+              <li>20 min mobility: hip, thoracic, shoulder</li>
+            </ul>
+          </div>
+        </div>
+        <div class="day-row">
+          <div class="day-label">Wed</div>
+          <div class="day-content"><span class="rest-label">Golf / Pickleball</span></div>
+        </div>
+        <div class="day-row">
+          <div class="day-label">Thu</div>
+          <div class="day-content">
+            <div class="day-name">Pickleball-Focused Lower Body</div>
+            <ul class="exercise-list">
+              <li>Lateral Step-ups 3×12</li>
+              <li>Lateral Band Walks 3×20</li>
+              <li>Single-leg Squat to chair 3×10</li>
+              <li>Calf Raises (single leg) 3×12</li>
+              <li>Hip Abductor/Adductor 3×15</li>
+            </ul>
+          </div>
+        </div>
+        <div class="day-row">
+          <div class="day-label">Fri</div>
+          <div class="day-content">
+            <div class="day-name">Core + Flexibility</div>
+            <ul class="exercise-list">
+              <li>Stability Ball Crunch 3×15</li>
+              <li>Bird-Dog Progression 3×12</li>
+              <li>Side Plank with lift 3×10</li>
+              <li>45 min stretch routine</li>
+            </ul>
+          </div>
+        </div>
+        <div class="day-row">
+          <div class="day-label">Sat/Sun</div>
+          <div class="day-content"><span class="rest-label">Golf / Pickleball / Rest</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Week 10 -->
+    <div class="week-card">
+      <div class="week-card-header">
+        <span class="week-num">Week 10</span>
+        <span class="week-focus">Peak Circuit</span>
+      </div>
+      <div class="week-card-body">
+        <div class="day-row">
+          <div class="day-label">Mon</div>
+          <div class="day-content">
+            <div class="day-name">Full Body Metabolic Circuit (4 rounds)</div>
+            <ul class="exercise-list">
+              <li>Goblet Squat ×12</li>
+              <li>Renegade Row (light) ×10</li>
+              <li>Step-up ×12</li>
+              <li>Push-up (incline) ×10</li>
+              <li>Plank ×35 sec</li>
+              <li>Rest 75 sec between rounds</li>
+            </ul>
+          </div>
+        </div>
+        <div class="day-row">
+          <div class="day-label">Tue</div>
+          <div class="day-content">
+            <div class="day-name">Interval Cardio + Core</div>
+            <ul class="exercise-list">
+              <li>35 min bike intervals</li>
+              <li>Ab circuit: 4 exercises × 3 sets</li>
+            </ul>
+          </div>
+        </div>
+        <div class="day-row">
+          <div class="day-label">Wed</div>
+          <div class="day-content"><span class="rest-label">Golf / Pickleball</span></div>
+        </div>
+        <div class="day-row">
+          <div class="day-label">Thu</div>
+          <div class="day-content">
+            <div class="day-name">Upper Body + Core</div>
+            <ul class="exercise-list">
+              <li>Cable Pull Apart 3×15</li>
+              <li>Neutral Grip Row 3×12</li>
+              <li>Arnold Press 3×12</li>
+              <li>Rotational Core Machine 3×15</li>
+            </ul>
+          </div>
+        </div>
+        <div class="day-row">
+          <div class="day-label">Fri</div>
+          <div class="day-content">
+            <div class="day-name">Deep Flexibility</div>
+            <ul class="exercise-list">
+              <li>50 min full body stretch + yoga flow</li>
+              <li>Pigeon pose, figure 4, spinal twist</li>
+            </ul>
+          </div>
+        </div>
+        <div class="day-row">
+          <div class="day-label">Sat/Sun</div>
+          <div class="day-content"><span class="rest-label">Golf / Pickleball / Rest</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Week 11 -->
+    <div class="week-card">
+      <div class="week-card-header">
+        <span class="week-num">Week 11</span>
+        <span class="week-focus">Final Push</span>
+      </div>
+      <div class="week-card-body">
+        <div class="day-row">
+          <div class="day-label">Mon</div>
+          <div class="day-content">
+            <div class="day-name">Strength + Power Core</div>
+            <ul class="exercise-list">
+              <li>All major compound movements</li>
+              <li>Best weights from Phase 2, add 5%</li>
+              <li>Medicine Ball Chop 3×10</li>
+              <li>Anti-rotation holds 3×30 sec</li>
+            </ul>
+          </div>
+        </div>
+        <div class="day-row">
+          <div class="day-label">Tue</div>
+          <div class="day-content">
+            <div class="day-name">Sustained Cardio</div>
+            <ul class="exercise-list">
+              <li>45 min steady-state walk (incline)</li>
+              <li>HR target: conversational pace</li>
+            </ul>
+          </div>
+        </div>
+        <div class="day-row">
+          <div class="day-label">Wed</div>
+          <div class="day-content"><span class="rest-label">Golf / Pickleball</span></div>
+        </div>
+        <div class="day-row">
+          <div class="day-label">Thu</div>
+          <div class="day-content">
+            <div class="day-name">Lower Body + Balance</div>
+            <ul class="exercise-list">
+              <li>Single-leg exercises emphasis</li>
+              <li>Bosu squat 3×10</li>
+              <li>Lateral lunges 3×10</li>
+              <li>Ankle stability drills</li>
+            </ul>
+          </div>
+        </div>
+        <div class="day-row">
+          <div class="day-label">Fri</div>
+          <div class="day-content">
+            <div class="day-name">Flexibility + Recovery</div>
+            <ul class="exercise-list">
+              <li>50 min stretch — full body</li>
+              <li>Focus areas: hips, thoracic, shoulders</li>
+            </ul>
+          </div>
+        </div>
+        <div class="day-row">
+          <div class="day-label">Sat/Sun</div>
+          <div class="day-content"><span class="rest-label">Golf / Pickleball / Rest</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Week 12 -->
+    <div class="week-card">
+      <div class="week-card-header">
+        <span class="week-num">Week 12</span>
+        <span class="week-focus">Celebrate!</span>
+      </div>
+      <div class="week-card-body">
+        <div class="day-row">
+          <div class="day-label">Mon</div>
+          <div class="day-content">
+            <div class="day-name">Benchmark Full Body</div>
+            <ul class="exercise-list">
+              <li>Repeat Week 1 Monday workout</li>
+              <li>Compare weights and reps</li>
+              <li>Note how much stronger you feel!</li>
+            </ul>
+          </div>
+        </div>
+        <div class="day-row">
+          <div class="day-label">Tue</div>
+          <div class="day-content">
+            <div class="day-name">Favorite Cardio</div>
+            <ul class="exercise-list">
+              <li>40 min of whichever cardio you enjoy most</li>
+              <li>Celebrate your consistency</li>
+            </ul>
+          </div>
+        </div>
+        <div class="day-row">
+          <div class="day-label">Wed</div>
+          <div class="day-content"><span class="rest-label">Golf / Pickleball</span></div>
+        </div>
+        <div class="day-row">
+          <div class="day-label">Thu</div>
+          <div class="day-content">
+            <div class="day-name">Flexibility Assessment</div>
+            <ul class="exercise-list">
+              <li>Repeat flexibility tests from Week 1</li>
+              <li>Document range of motion improvements</li>
+              <li>Light strength maintenance</li>
+            </ul>
+          </div>
+        </div>
+        <div class="day-row">
+          <div class="day-label">Fri</div>
+          <div class="day-content">
+            <div class="day-name">Celebration Stretch</div>
+            <ul class="exercise-list">
+              <li>60 min yoga-inspired full body session</li>
+              <li>Reflect on 12-week journey</li>
+              <li>Plan what comes next!</li>
+            </ul>
+          </div>
+        </div>
+        <div class="day-row">
+          <div class="day-label">Sat/Sun</div>
+          <div class="day-content"><span class="rest-label">Golf / Pickleball / Celebrate!</span></div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- TIPS -->
+<div class="section-label">
+  <h2>Keys to Success</h2>
+</div>
+
+<div class="tips-section">
+  <div class="tip-card">
+    <h3>🏌️ Golf & Pickleball Days</h3>
+    <ul>
+      <li>These count as active days — don't add gym on same day</li>
+      <li>Always warm up 10 min before play</li>
+      <li>Stretch hips, shoulder, thoracic after each game</li>
+      <li>Hydrate generously before, during, and after</li>
+    </ul>
+  </div>
+  <div class="tip-card">
+    <h3>⚖️ Weight Management Tips</h3>
+    <ul>
+      <li>Prioritize protein at every meal (0.7–1g per lb bodyweight)</li>
+      <li>Aim for 7–8 hours of sleep — critical for fat loss</li>
+      <li>Stay hydrated: 64+ oz water daily</li>
+      <li>Consistency beats intensity — show up every week</li>
+    </ul>
+  </div>
+  <div class="tip-card">
+    <h3>🧘 Flexibility Guidelines</h3>
+    <ul>
+      <li>Hold stretches 30–45 seconds — never bounce</li>
+      <li>Stretch warm muscles (after workout or warm-up)</li>
+      <li>Focus on hips, hamstrings, thoracic, shoulders</li>
+      <li>Daily gentle movement keeps joints healthy</li>
+    </ul>
+  </div>
+  <div class="tip-card">
+    <h3>💪 Core Principles</h3>
+    <ul>
+      <li>Core = stability, not just crunches</li>
+      <li>Anti-rotation and balance work are essential</li>
+      <li>Engage core during every exercise</li>
+      <li>Strong core = better golf swing and court agility</li>
+    </ul>
+  </div>
+  <div class="tip-card">
+    <h3>🛡️ Safety First</h3>
+    <ul>
+      <li>Always warm up 5–10 min before strength work</li>
+      <li>Stop if you feel sharp or unusual pain</li>
+      <li>Never skip a deload week — recovery is training</li>
+      <li>Consult your doctor if new symptoms arise</li>
+    </ul>
+  </div>
+</div>
+
+<div class="footer">
+  <strong>12-Week Active Senior Fitness Program</strong><br>
+  Designed to complement golf &amp; pickleball · Weeks 4, 8 are planned deload/recovery weeks<br>
+  Always consult a physician before beginning a new exercise program.
+</div>
+
+</body>
+</html>
